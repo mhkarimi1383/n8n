@@ -30,6 +30,7 @@ describe('Wordpress > GenericFunctions', () => {
 			mockFunctions.helpers.requestWithAuthentication.mockResolvedValue({ data: 'testData' });
 			await wordpressApiRequest.call(mockFunctions, 'POST', '/posts', {}, {});
 			expect(mockFunctions.helpers.requestWithAuthentication).toHaveBeenCalledWith(
+				'wordpressApi',
 				expect.objectContaining({
 					headers: expect.objectContaining({
 						'Cache-Control': 'no-cache',
@@ -42,6 +43,7 @@ describe('Wordpress > GenericFunctions', () => {
 			mockFunctions.helpers.requestWithAuthentication.mockResolvedValue({ data: 'testData' });
 			await wordpressApiRequest.call(mockFunctions, 'GET', '/posts', {}, {});
 			expect(mockFunctions.helpers.requestWithAuthentication).toHaveBeenCalledWith(
+				'wordpressApi',
 				expect.objectContaining({
 					headers: expect.not.objectContaining({
 						'Cache-Control': 'no-cache',
